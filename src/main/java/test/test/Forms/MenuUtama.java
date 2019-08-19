@@ -71,6 +71,11 @@ public class MenuUtama extends javax.swing.JFrame {
         jLabel7.setText("MASTER");
 
         jButton6.setText("KODE");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("JENIS PENGUJIAN");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +252,12 @@ public class MenuUtama extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new Kode().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -36,6 +36,7 @@ import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.DBException;
 import org.javalite.activejdbc.LazyList;
 import test.test.Models.JenisPengujianModel;
+import test.test.Models.KodeSampelModel;
 
 import test.test.Models.TempatTugasModel;
 import test.test.Reports.Config;
@@ -44,14 +45,14 @@ import test.test.Reports.Config;
  *
  * @author user
  */
-public class JenisPengujian extends javax.swing.JFrame {
+public class Kode extends javax.swing.JFrame {
     private DefaultTableModel model = new DefaultTableModel();
     private String ID;
     private String state;
     /**
      * Creates new form PangkatGol
      */
-    public JenisPengujian() {
+    public Kode() {
         initComponents();
                 
         loadTable();
@@ -82,19 +83,21 @@ public class JenisPengujian extends javax.swing.JFrame {
         }
     }
     
-    private void loadTableHelper(LazyList<JenisPengujianModel> jenisPengujians) {
+    private void loadTableHelper(LazyList<KodeSampelModel> kodeSampels) {
         model = new DefaultTableModel();
                 
         model.addColumn("#ID");
-        model.addColumn("Jenis Pengujian");
-        
+        model.addColumn("Kode");
+        model.addColumn("Jenis Sampel");
+       
         Base.open();
         try {
 
-            for(JenisPengujianModel jenisPengujian : jenisPengujians) {                
+            for(KodeSampelModel kodeSampel : kodeSampels) {                
                 model.addRow(new Object[]{
-                    jenisPengujian.getId(),
-                    jenisPengujian.getString("nama_jenis_pengujian"),
+                    kodeSampel.getId(),
+                    kodeSampel.getString("kode"),
+                    kodeSampel.getString("jenis_sampel"),
                 });
             }
         } catch (Exception e) {
@@ -113,26 +116,26 @@ public class JenisPengujian extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<JenisPengujianModel> jenisPengujians = JenisPengujianModel.findAll();
+        LazyList<KodeSampelModel> kodeSampels = KodeSampelModel.findAll();
         Base.close();
         
-        loadTableHelper(jenisPengujians);
+        loadTableHelper(kodeSampels);
     }
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<JenisPengujianModel> jenisPengujians = JenisPengujianModel.where("nama_jenis_pengujian like ?", '%' + cari + '%');
+        LazyList<KodeSampelModel> kodeSampels = KodeSampelModel.where("jenis_sampel like ? OR kode like ?", '%' + cari + '%', '%' + cari + '%');
         Base.close();
         
-        loadTableHelper(jenisPengujians);
+        loadTableHelper(kodeSampels);
     }
 
     
     private void hapusData() {
         Base.open();
-        JenisPengujianModel jenisPengujian = JenisPengujianModel.findById(ID);
+        KodeSampelModel kodeSampel = KodeSampelModel.findById(ID);
         try {
-            jenisPengujian.delete();
+            kodeSampel.delete();
         } catch (DBException e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -158,9 +161,10 @@ public class JenisPengujian extends javax.swing.JFrame {
     private void tambahData() {
         Base.open();
         try {
-            JenisPengujianModel jenisPengujian = new JenisPengujianModel();
-            jenisPengujian.set("nama_jenis_pengujian", Nama.getText());
-            jenisPengujian.save();
+            KodeSampelModel kodeSampel = new KodeSampelModel();
+            kodeSampel.set("kode", Kode.getText());
+            kodeSampel.set("jenis_sampel", Jenis.getText());
+            kodeSampel.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -170,9 +174,10 @@ public class JenisPengujian extends javax.swing.JFrame {
     private void ubahData() {
         Base.open();
         try {
-            JenisPengujianModel jenisPengujian = JenisPengujianModel.findById(ID);
-            jenisPengujian.set("nama_jenis_pengujian", Nama.getText());
-            jenisPengujian.save();
+            KodeSampelModel kodeSampel = KodeSampelModel.findById(ID);
+            kodeSampel.set("kode", Kode.getText());
+            kodeSampel.set("jenis_sampel", Jenis.getText());
+            kodeSampel.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -180,7 +185,8 @@ public class JenisPengujian extends javax.swing.JFrame {
     }
 
     private void resetForm() {
-        Nama.setText("");
+        Kode.setText("");
+        Jenis.setText("");
     }
 
     /**
@@ -199,12 +205,14 @@ public class JenisPengujian extends javax.swing.JFrame {
         ButtonResetHapus = new javax.swing.JButton();
         TextCari = new javax.swing.JTextField();
         LabelCari = new javax.swing.JLabel();
-        Nama = new javax.swing.JTextField();
+        Kode = new javax.swing.JTextField();
         LabelCari1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        Jenis = new javax.swing.JTextField();
+        LabelCari2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jenis Pengujian");
@@ -258,15 +266,15 @@ public class JenisPengujian extends javax.swing.JFrame {
             }
         });
 
-        LabelCari.setText("Cari (Jenis Pengujian)");
+        LabelCari.setText("Cari (Kode / Jenis Sampel)");
 
-        Nama.addActionListener(new java.awt.event.ActionListener() {
+        Kode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NamaActionPerformed(evt);
+                KodeActionPerformed(evt);
             }
         });
 
-        LabelCari1.setText("Jenis Pengujian");
+        LabelCari1.setText("Kode");
 
         jLabel4.setText("RBH DAN LABORATORIUM KESEHATAN MASYARAKAT VETERINER (KESMAVET)");
 
@@ -274,34 +282,24 @@ public class JenisPengujian extends javax.swing.JFrame {
 
         jLabel6.setText("Jalan Macan No. 22 Hadimulyo Timur Metro Pusat, Kota Metro. Kode Pos 34113");
 
+        Jenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JenisActionPerformed(evt);
+            }
+        });
+
+        LabelCari2.setText("Jenis Sampel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(ScrollPane))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LabelCari1)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ButtonTambahUbah)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(ButtonRefresh)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(ButtonResetHapus))
-                                    .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LabelCari)
-                                .addGap(18, 18, 18)
-                                .addComponent(TextCari, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(169, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -311,9 +309,34 @@ public class JenisPengujian extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(10, 10, 10)
                                     .addComponent(jLabel5))))
-                        .addGap(117, 117, 117)))
+                        .addGap(117, 117, 117))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(132, 132, 132)
+                                    .addComponent(LabelCari2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(169, 169, 169)
+                                    .addComponent(LabelCari1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Kode, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(LabelCari)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(ButtonTambahUbah)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(ButtonRefresh)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(ButtonResetHapus))
+                                    .addComponent(TextCari, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jSeparator1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,11 +349,15 @@ public class JenisPengujian extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelCari1)
-                    .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(Kode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelCari2)
+                    .addComponent(Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonRefresh)
                     .addComponent(ButtonTambahUbah)
@@ -339,9 +366,9 @@ public class JenisPengujian extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelCari))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -365,10 +392,11 @@ public class JenisPengujian extends javax.swing.JFrame {
             ID = model.getValueAt(i, 0).toString();
 
             Base.open();
-            JenisPengujianModel jenisPengujian = JenisPengujianModel.findById(ID);
+            KodeSampelModel kodeSampel = KodeSampelModel.findById(ID);
             Base.close();
 
-            Nama.setText(jenisPengujian.getString("nama_jenis_pengujian"));
+            Kode.setText(kodeSampel.getString("kode"));
+            Jenis.setText(kodeSampel.getString("jenis_sampel"));
             
             setState("edit");
         }
@@ -376,16 +404,20 @@ public class JenisPengujian extends javax.swing.JFrame {
 
     private void ButtonTambahUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTambahUbahActionPerformed
         if (state.equals("index")) {
-            if (Nama.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Form Jenis Pengujian Masih Kosong !!!");
+            if (Kode.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Kode Masih Kosong !!!");
+            } else if (Jenis.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Jenis Sampel Masih Kosong !!!");
             } else {
                 tambahData();
                 resetForm();
                 loadTable();
             }
         } else {
-            if (Nama.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Form Jenis Pengujian Masih Kosong !!!");
+            if (Kode.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Kode Masih Kosong !!!");
+            } else if (Jenis.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Jenis Sampel Masih Kosong !!!");
             } else {
                 ubahData();
                 resetForm();
@@ -407,9 +439,13 @@ public class JenisPengujian extends javax.swing.JFrame {
         cari();
     }//GEN-LAST:event_TextCariActionPerformed
 
-    private void NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaActionPerformed
+    private void KodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KodeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NamaActionPerformed
+    }//GEN-LAST:event_KodeActionPerformed
+
+    private void JenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JenisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JenisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,14 +464,22 @@ public class JenisPengujian extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JenisPengujian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Kode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JenisPengujian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Kode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JenisPengujian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Kode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JenisPengujian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Kode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -448,7 +492,7 @@ public class JenisPengujian extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JenisPengujian().setVisible(true);
+                new Kode().setVisible(true);
             }
         });
     }
@@ -457,9 +501,11 @@ public class JenisPengujian extends javax.swing.JFrame {
     private javax.swing.JButton ButtonRefresh;
     private javax.swing.JButton ButtonResetHapus;
     private javax.swing.JButton ButtonTambahUbah;
+    private javax.swing.JTextField Jenis;
+    private javax.swing.JTextField Kode;
     private javax.swing.JLabel LabelCari;
     private javax.swing.JLabel LabelCari1;
-    private javax.swing.JTextField Nama;
+    private javax.swing.JLabel LabelCari2;
     private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JTable TablePegawai;
     private javax.swing.JTextField TextCari;
