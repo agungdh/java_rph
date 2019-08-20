@@ -181,7 +181,7 @@ public class CetakHasilUji extends javax.swing.JFrame {
             JasperCompileManager.compileReport(fileName);
             
             Map param= new HashMap();
-            param.put("id_hasil", No.getText());
+            param.put("no_form", No.getText());
             
             JasperFillManager.fillReport(filetoFill, param, con);
             JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);

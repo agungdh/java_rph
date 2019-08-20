@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="hasiluji" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="33417fb6-bb47-4934-8811-4a4ffb06dd3f">
-	<property name="ireport.zoom" value="1.3310000000000086"/>
+	<property name="ireport.zoom" value="1.0000000000000062"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="id_hasil" class="java.lang.String">
+	<parameter name="no_form" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -34,7 +34,7 @@ FROM hasil_uji h, sampel s, kode_sampel k, jenis_pengujian j
 WHERE h.id_sampel = s.id
 AND s.id_kode_sampel = k.id
 AND s.id_jenis_pengujian = j.id
-AND h.id = $P{id_hasil}]]>
+AND s.no_formulir = $P{no_form}]]>
 	</queryString>
 	<field name="h_id" class="java.lang.Integer"/>
 	<field name="h_id_sampel" class="java.lang.Integer"/>
@@ -255,7 +255,7 @@ AND h.id = $P{id_hasil}]]>
 			</image>
 			<textField>
 				<reportElement x="411" y="0" width="144" height="20" uuid="9a53c663-dc3d-4d0b-955c-0faa1fe86507"/>
-				<textFieldExpression><![CDATA[$F{h_id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{s_no_formulir}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="411" y="59" width="141" height="20" uuid="de90207e-7110-4f86-ad36-c998b09ec9d1"/>
@@ -344,6 +344,10 @@ AND h.id = $P{id_hasil}]]>
 			<textField>
 				<reportElement x="116" y="118" width="183" height="20" uuid="a945fa2d-0c84-4570-8b96-f63bf432377e"/>
 				<textFieldExpression><![CDATA[$F{s_tanggal_uji_parsed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="18" width="183" height="20" uuid="05061c90-b656-4a0f-b5b4-c9dd2d89dc19"/>
+				<textFieldExpression><![CDATA[$F{s_nama}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
