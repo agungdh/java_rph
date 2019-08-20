@@ -102,6 +102,11 @@ public class CetakHasilUji extends javax.swing.JFrame {
         LabelCari2.setText("CETAK HASIL UJI");
 
         jButton1.setText("Cetak");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,6 +171,26 @@ public class CetakHasilUji extends javax.swing.JFrame {
     private void NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            Config objkoneksi = new Config();
+            Connection con = objkoneksi.bukakoneksi();
+            String fileName="src/main/java/test/test/Reports/hasiluji.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/hasiluji.jasper";
+            JasperCompileManager.compileReport(fileName);
+            
+            Map param= new HashMap();
+            param.put("id_hasil", No.getText());
+            
+            JasperFillManager.fillReport(filetoFill, param, con);
+            JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
+            JasperViewer.viewReport(jp,false);
+
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

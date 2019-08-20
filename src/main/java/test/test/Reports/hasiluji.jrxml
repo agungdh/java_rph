@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="hasiluji" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="33417fb6-bb47-4934-8811-4a4ffb06dd3f">
-	<property name="ireport.zoom" value="1.0000000000000062"/>
+	<property name="ireport.zoom" value="1.3310000000000086"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="179"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_hasil" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
 h.id h_id,
@@ -25,11 +28,13 @@ k.id k_id,
 k.jenis_sampel k_jenis_sampel,
 k.kode k_kode,
 j.id j_id,
-j.nama_jenis_pengujian j_nama_jenis_pengujian
+j.nama_jenis_pengujian j_nama_jenis_pengujian,
+concat(lpad(day(s.tanggal_uji), 2, 0), '-', lpad(month(s.tanggal_uji), 2, 0), '-', year(s.tanggal_uji)) s_tanggal_uji_parsed
 FROM hasil_uji h, sampel s, kode_sampel k, jenis_pengujian j
 WHERE h.id_sampel = s.id
 AND s.id_kode_sampel = k.id
-AND s.id_jenis_pengujian = j.id]]>
+AND s.id_jenis_pengujian = j.id
+AND h.id = $P{id_hasil}]]>
 	</queryString>
 	<field name="h_id" class="java.lang.Integer"/>
 	<field name="h_id_sampel" class="java.lang.Integer"/>
@@ -52,6 +57,7 @@ AND s.id_jenis_pengujian = j.id]]>
 	<field name="k_kode" class="java.lang.String"/>
 	<field name="j_id" class="java.lang.Integer"/>
 	<field name="j_nama_jenis_pengujian" class="java.lang.String"/>
+	<field name="s_tanggal_uji_parsed" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -249,11 +255,11 @@ AND s.id_jenis_pengujian = j.id]]>
 			</image>
 			<textField>
 				<reportElement x="411" y="0" width="144" height="20" uuid="9a53c663-dc3d-4d0b-955c-0faa1fe86507"/>
-				<textFieldExpression><![CDATA[$F{s_id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{h_id}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="411" y="59" width="141" height="20" uuid="de90207e-7110-4f86-ad36-c998b09ec9d1"/>
-				<textFieldExpression><![CDATA[$F{s_tanggal_uji}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{s_tanggal_uji_parsed}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -333,11 +339,11 @@ AND s.id_jenis_pengujian = j.id]]>
 			</textField>
 			<textField>
 				<reportElement x="116" y="98" width="183" height="20" uuid="8e37acc6-38d8-4e5d-bde2-75756ad10169"/>
-				<textFieldExpression><![CDATA[$F{s_tanggal_uji}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{s_tanggal_uji_parsed}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="116" y="118" width="183" height="20" uuid="a945fa2d-0c84-4570-8b96-f63bf432377e"/>
-				<textFieldExpression><![CDATA[$F{s_tanggal_uji}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{s_tanggal_uji_parsed}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -472,7 +478,4 @@ AND s.id_jenis_pengujian = j.id]]>
 			</staticText>
 		</band>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
