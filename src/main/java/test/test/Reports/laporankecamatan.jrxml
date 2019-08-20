@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3490c0fd-af31-446b-a29d-8081a76ee146">
-	<property name="ireport.zoom" value="2.1435888100000153"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="46"/>
+	<property name="ireport.zoom" value="1.464100000000011"/>
+	<property name="ireport.x" value="36"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -15,21 +15,16 @@
 			</style>
 		</conditionalStyle>
 	</style>
-	<parameter name="awal" class="java.lang.String">
+	<parameter name="kecamatan" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="akhir" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="tanggal_awal" class="java.lang.String"/>
-	<parameter name="tanggal_akhir" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT s.*, k.jenis_sampel, k.kode, j.nama_jenis_pengujian,
 concat(lpad(day(s.tanggal_uji), 2, 0), '-', lpad(month(s.tanggal_uji), 2, 0), '-', year(s.tanggal_uji)) tanggal_parsed
 FROM sampel s, kode_sampel k, jenis_pengujian j
 WHERE s.id_kode_sampel = k.id
 AND s.id_jenis_pengujian = j.id
-AND s.tanggal_uji BETWEEN $P{awal} AND $P{akhir}]]>
+AND s.kecamatan = $P{kecamatan}]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -97,18 +92,14 @@ AND s.tanggal_uji BETWEEN $P{awal} AND $P{akhir}]]>
 				</textElement>
 				<text><![CDATA[DINAS KETAHANAN PANGAN PERTANIAN DAN PERIKANAN KOTA METRO]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="1" y="73" width="59" height="20" uuid="beb3ecdd-ae93-407c-96cd-966694813f74"/>
-				<textFieldExpression><![CDATA[$P{tanggal_awal}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="70" y="73" width="91" height="20" uuid="43de5427-f87d-4886-995a-fb7a4a7d4a7d"/>
-				<textFieldExpression><![CDATA[$P{tanggal_akhir}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="60" y="73" width="10" height="20" uuid="4afa5d75-c71d-4166-a838-ee0c7c2d444a"/>
-				<text><![CDATA[-]]></text>
+				<reportElement x="1" y="73" width="60" height="20" uuid="4afa5d75-c71d-4166-a838-ee0c7c2d444a"/>
+				<text><![CDATA[Kecamatan :]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="61" y="73" width="100" height="20" uuid="e96915b4-b9ac-4b57-b9dc-c1304dc91d6c"/>
+				<textFieldExpression><![CDATA[$P{kecamatan}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>

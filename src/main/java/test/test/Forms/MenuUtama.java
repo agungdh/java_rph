@@ -303,13 +303,13 @@ public class MenuUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        new CetakHasilUji().setVisible(true);
+        new Laporan().setVisible(true);
         
         this.dispose();
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        new CetakHasilUji().setVisible(true);
+        new LaporanPerKecamatan().setVisible(true);
         
         this.dispose();
     }//GEN-LAST:event_jButton17ActionPerformed

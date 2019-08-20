@@ -173,6 +173,12 @@ public class Laporan extends javax.swing.JFrame {
             param.put("awal", Dawal);
             param.put("akhir", Dakhir);
             
+            dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            Dawal = dateFormat.format(awal.getDate());
+            Dakhir = dateFormat.format(akhir.getDate());
+            param.put("tanggal_awal", Dawal);
+            param.put("tanggal_akhir", Dakhir);
+            
             JasperFillManager.fillReport(filetoFill, param, con);
             JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
             JasperViewer.viewReport(jp,false);

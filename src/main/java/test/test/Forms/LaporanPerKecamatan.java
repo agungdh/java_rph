@@ -107,14 +107,39 @@ public class LaporanPerKecamatan extends javax.swing.JFrame {
         LabelCari4.setText("PILIH KECAMATAN");
 
         jButton1.setText("Metro Pusat");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Metro Timur");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Metro Utara");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Metro Barat");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Metro Selatan");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -209,6 +234,106 @@ public class LaporanPerKecamatan extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            Config objkoneksi = new Config();
+            Connection con = objkoneksi.bukakoneksi();
+            String fileName="src/main/java/test/test/Reports/laporankecamatan.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/laporankecamatan.jasper";
+            JasperCompileManager.compileReport(fileName);
+            
+            Map param= new HashMap();
+            param.put("kecamatan", "Metro Pusat");
+            
+            JasperFillManager.fillReport(filetoFill, param, con);
+            JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
+            JasperViewer.viewReport(jp,false);
+
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+            Config objkoneksi = new Config();
+            Connection con = objkoneksi.bukakoneksi();
+            String fileName="src/main/java/test/test/Reports/laporankecamatan.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/laporankecamatan.jasper";
+            JasperCompileManager.compileReport(fileName);
+            
+            Map param= new HashMap();
+            param.put("kecamatan", "Metro Timur");
+            
+            JasperFillManager.fillReport(filetoFill, param, con);
+            JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
+            JasperViewer.viewReport(jp,false);
+
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try{
+            Config objkoneksi = new Config();
+            Connection con = objkoneksi.bukakoneksi();
+            String fileName="src/main/java/test/test/Reports/laporankecamatan.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/laporankecamatan.jasper";
+            JasperCompileManager.compileReport(fileName);
+            
+            Map param= new HashMap();
+            param.put("kecamatan", "Metro Utara");
+            
+            JasperFillManager.fillReport(filetoFill, param, con);
+            JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
+            JasperViewer.viewReport(jp,false);
+
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try{
+            Config objkoneksi = new Config();
+            Connection con = objkoneksi.bukakoneksi();
+            String fileName="src/main/java/test/test/Reports/laporankecamatan.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/laporankecamatan.jasper";
+            JasperCompileManager.compileReport(fileName);
+            
+            Map param= new HashMap();
+            param.put("kecamatan", "Metro Barat");
+            
+            JasperFillManager.fillReport(filetoFill, param, con);
+            JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
+            JasperViewer.viewReport(jp,false);
+
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try{
+            Config objkoneksi = new Config();
+            Connection con = objkoneksi.bukakoneksi();
+            String fileName="src/main/java/test/test/Reports/laporankecamatan.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/laporankecamatan.jasper";
+            JasperCompileManager.compileReport(fileName);
+            
+            Map param= new HashMap();
+            param.put("kecamatan", "Metro Selatan");
+            
+            JasperFillManager.fillReport(filetoFill, param, con);
+            JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
+            JasperViewer.viewReport(jp,false);
+
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
