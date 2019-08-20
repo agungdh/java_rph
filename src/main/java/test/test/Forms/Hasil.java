@@ -243,11 +243,11 @@ public class Hasil extends javax.swing.JFrame {
             hasilUji.set("id_jenis_pengujian", selectedComboJenisUjiIndex);
             hasilUji.set("tanggal_uji", dateFormat.format(Tanggal.getDate()));
             if (Baik.isSelected()) {
-                hasilUji.set("hasil_uji", "Baik");   
+                hasilUji.set("keterangan", "Baik");   
             } else {
-                hasilUji.set("hasil_uji", "Kurang Baik");
+                hasilUji.set("keterangan", "Kurang Baik");
             }
-            hasilUji.set("keterangan", Keterangan.getText());   
+            hasilUji.set("hasil_uji", Hasil.getText());   
             hasilUji.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -264,11 +264,11 @@ public class Hasil extends javax.swing.JFrame {
             hasilUji.set("id_jenis_pengujian", selectedComboJenisUjiIndex);
             hasilUji.set("tanggal_uji", dateFormat.format(Tanggal.getDate()));
             if (Baik.isSelected()) {
-                hasilUji.set("hasil_uji", "Baik");   
+                hasilUji.set("keterangan", "Baik");   
             } else {
-                hasilUji.set("hasil_uji", "Kurang Baik");
+                hasilUji.set("keterangan", "Kurang Baik");
             }
-            hasilUji.set("keterangan", Keterangan.getText());   
+            hasilUji.set("hasil_uji", Hasil.getText());   
             hasilUji.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -285,7 +285,7 @@ public class Hasil extends javax.swing.JFrame {
         Baik.setSelected(false);
         Kurang.setSelected(false);
         JenisUji.setSelectedIndex(0);
-        Keterangan.setText("");
+        Hasil.setText("");
     }
 
     /**
@@ -323,7 +323,7 @@ public class Hasil extends javax.swing.JFrame {
         Kurang = new javax.swing.JRadioButton();
         Jenis = new javax.swing.JTextField();
         LabelCari11 = new javax.swing.JLabel();
-        Keterangan = new javax.swing.JTextField();
+        Hasil = new javax.swing.JTextField();
         LabelCari12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -426,7 +426,7 @@ public class Hasil extends javax.swing.JFrame {
 
         Tanggal.setDateFormatString("dd-MM-yyyy");
 
-        LabelCari10.setText("Kondisi");
+        LabelCari10.setText("Keterangan");
 
         Baik.setText("Baik");
         Baik.addActionListener(new java.awt.event.ActionListener() {
@@ -451,13 +451,13 @@ public class Hasil extends javax.swing.JFrame {
 
         LabelCari11.setText("Jenis Sampel");
 
-        Keterangan.addActionListener(new java.awt.event.ActionListener() {
+        Hasil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KeteranganActionPerformed(evt);
+                HasilActionPerformed(evt);
             }
         });
 
-        LabelCari12.setText("Keterangan");
+        LabelCari12.setText("Hasil Uji");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -521,7 +521,7 @@ public class Hasil extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari12)
                                 .addGap(18, 18, 18)
-                                .addComponent(Keterangan, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Hasil, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 102, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -590,7 +590,7 @@ public class Hasil extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelCari12)
-                            .addComponent(Keterangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Hasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonRefresh)
@@ -631,7 +631,7 @@ public class Hasil extends javax.swing.JFrame {
             
             Sampel.setSelectedIndex(comboSampelID.indexOf(Integer.parseInt(hasilUji.getString("id_sampel"))));
             JenisUji.setSelectedIndex(comboJenisUjiID.indexOf(Integer.parseInt(hasilUji.getString("id_jenis_pengujian"))));
-            Keterangan.setText(hasilUji.getString("keterangan"));
+            Hasil.setText(hasilUji.getString("hasil_uji"));
             
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             try {
@@ -640,7 +640,7 @@ public class Hasil extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
             
-            if (hasilUji.getString("hasil_uji").equals("Baik")) {
+            if (hasilUji.getString("keterangan").equals("Baik")) {
                 Baik.setSelected(true);
                 Kurang.setSelected(false); 
             } else {
@@ -657,9 +657,9 @@ public class Hasil extends javax.swing.JFrame {
             if (Tanggal.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
             } else if (!Baik.isSelected() && !Kurang.isSelected()) {
-                JOptionPane.showMessageDialog(null, "Form Kondisi Belum Dipilih !!!");
-            } else if ((Keterangan.getText().trim().equals(""))) {
-                JOptionPane.showMessageDialog(null, "Form Keterangan Masih Kosong !!!");
+                JOptionPane.showMessageDialog(null, "Form Keterangan Belum Dipilih !!!");
+            } else if ((Hasil.getText().trim().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Form Hasil Uji Masih Kosong !!!");
             } else {
                 tambahData();
                 resetForm();
@@ -669,9 +669,9 @@ public class Hasil extends javax.swing.JFrame {
             if (Tanggal.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
             } else if (!Baik.isSelected() && !Kurang.isSelected()) {
-                JOptionPane.showMessageDialog(null, "Form Kondisi Belum Dipilih !!!");
-            } else if ((Keterangan.getText().trim().equals(""))) {
-                JOptionPane.showMessageDialog(null, "Form Keterangan Masih Kosong !!!");
+                JOptionPane.showMessageDialog(null, "Form Keterangan Belum Dipilih !!!");
+            } else if ((Hasil.getText().trim().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Form Hasil Uji Masih Kosong !!!");
             } else {
                 ubahData();
                 resetForm();
@@ -727,9 +727,9 @@ public class Hasil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JenisActionPerformed
 
-    private void KeteranganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeteranganActionPerformed
+    private void HasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HasilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganActionPerformed
+    }//GEN-LAST:event_HasilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -834,9 +834,9 @@ public class Hasil extends javax.swing.JFrame {
     private javax.swing.JButton ButtonRefresh;
     private javax.swing.JButton ButtonResetHapus;
     private javax.swing.JButton ButtonTambahUbah;
+    private javax.swing.JTextField Hasil;
     private javax.swing.JTextField Jenis;
     private javax.swing.JComboBox<String> JenisUji;
-    private javax.swing.JTextField Keterangan;
     private javax.swing.JTextField Kode;
     private javax.swing.JRadioButton Kurang;
     private javax.swing.JLabel LabelCari;

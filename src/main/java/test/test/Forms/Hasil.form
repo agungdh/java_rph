@@ -101,7 +101,7 @@
                           <Group type="102" attributes="0">
                               <Component id="LabelCari12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Keterangan" min="-2" pref="214" max="-2" attributes="0"/>
+                              <Component id="Hasil" min="-2" pref="214" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="102" max="32767" attributes="0"/>
@@ -191,7 +191,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="LabelCari12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Keterangan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Hasil" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -371,7 +371,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="LabelCari10">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Kondisi"/>
+        <Property name="text" type="java.lang.String" value="Keterangan"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="Baik">
@@ -403,14 +403,14 @@
         <Property name="text" type="java.lang.String" value="Jenis Sampel"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Keterangan">
+    <Component class="javax.swing.JTextField" name="Hasil">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KeteranganActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HasilActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelCari12">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Keterangan"/>
+        <Property name="text" type="java.lang.String" value="Hasil Uji"/>
       </Properties>
     </Component>
   </SubComponents>
