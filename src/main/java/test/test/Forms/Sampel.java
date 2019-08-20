@@ -211,9 +211,9 @@ public class Sampel extends javax.swing.JFrame {
     
     private void hapusData() {
         Base.open();
-        KodeSampelModel kodeSampel = KodeSampelModel.findById(ID);
+        SampelModel sampel = SampelModel.findById(ID);
         try {
-            kodeSampel.delete();
+            sampel.delete();
         } catch (DBException e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -237,29 +237,53 @@ public class Sampel extends javax.swing.JFrame {
     }
     
     private void tambahData() {
-//        Base.open();
-//        try {
-//            KodeSampelModel kodeSampel = new KodeSampelModel();
-//            kodeSampel.set("kode", Kode.getText());
-//            kodeSampel.set("jenis_sampel", Jenis.getText());
-//            kodeSampel.save();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e.getMessage());
-//        }
-//        Base.close();
+        Base.open();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            SampelModel sampel = new SampelModel();
+            sampel.set("id_kode_sampel", selectedComboKodeIndex);
+            sampel.set("id_jenis_pengujian", selectedComboJenisUjiIndex);
+            sampel.set("no_formulir", No.getText());
+            sampel.set("nama", Nama.getText());
+            sampel.set("alamat", Alamat.getText());
+            sampel.set("kecamatan", Kecamatan.getSelectedItem());
+            sampel.set("tanggal_uji", dateFormat.format(Tanggal.getDate()));
+            sampel.set("jumlah", Jumlah.getValue());
+            if (Baik.isSelected()) {
+                sampel.set("kondisi", "Baik");   
+            } else {
+                sampel.set("kondisi", "Kurang Baik");
+            }
+            sampel.save();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        Base.close();
     }
     
     private void ubahData() {
-//        Base.open();
-//        try {
-//            KodeSampelModel kodeSampel = KodeSampelModel.findById(ID);
-//            kodeSampel.set("kode", Kode.getText());
-//            kodeSampel.set("jenis_sampel", Jenis.getText());
-//            kodeSampel.save();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e.getMessage());
-//        }
-//        Base.close();
+        Base.open();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            SampelModel sampel = SampelModel.findById(ID);
+            sampel.set("id_kode_sampel", selectedComboKodeIndex);
+            sampel.set("id_jenis_pengujian", selectedComboJenisUjiIndex);
+            sampel.set("no_formulir", No.getText());
+            sampel.set("nama", Nama.getText());
+            sampel.set("alamat", Alamat.getText());
+            sampel.set("kecamatan", Kecamatan.getSelectedItem());
+            sampel.set("tanggal_uji", dateFormat.format(Tanggal.getDate()));
+            sampel.set("jumlah", Jumlah.getValue());
+            if (Baik.isSelected()) {
+                sampel.set("kondisi", "Baik");   
+            } else {
+                sampel.set("kondisi", "Kurang Baik");
+            }
+            sampel.save();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        Base.close();
     }
 
     private void resetForm() {
@@ -431,11 +455,13 @@ public class Sampel extends javax.swing.JFrame {
             }
         });
 
-        Kecamatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro Pusat", "Metro Timur", "Metro Utama", "Metro Barat", "Metro Selatan" }));
+        Kecamatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro Pusat", "Metro Timur", "Metro Utara", "Metro Barat", "Metro Selatan" }));
 
         LabelCari8.setText("Kecamatan");
 
         LabelCari9.setText("Tanggal");
+
+        Tanggal.setDateFormatString("dd-MM-yyyy");
 
         LabelCari10.setText("Kondisi");
 
@@ -625,43 +651,75 @@ public class Sampel extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void TablePegawaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablePegawaiMouseClicked
-//        int i =TablePegawai.getSelectedRow();
-//        if(i>=0){
-//            ID = model.getValueAt(i, 0).toString();
-//
-//            Base.open();
-//            KodeSampelModel kodeSampel = KodeSampelModel.findById(ID);
-//            Base.close();
-//
-//            Kode.setText(kodeSampel.getString("kode"));
-//            Jenis.setText(kodeSampel.getString("jenis_sampel"));
-//            
-//            setState("edit");
-//        }
+        int i =TablePegawai.getSelectedRow();
+        if(i>=0){
+            ID = model.getValueAt(i, 0).toString();
+
+            Base.open();
+            SampelModel sampel = SampelModel.findById(ID);
+            Base.close();
+            
+            Kode.setSelectedIndex(comboKodeID.indexOf(Integer.parseInt(sampel.getString("id_kode_sampel"))));
+            JenisUji.setSelectedIndex(comboJenisUjiID.indexOf(Integer.parseInt(sampel.getString("id_jenis_pengujian"))));
+            No.setText(sampel.getString("no_formulir"));
+            Nama.setText(sampel.getString("nama"));
+            Alamat.setText(sampel.getString("alamat"));
+            Kecamatan.setSelectedItem(sampel.getString("kecamatan"));
+            Jumlah.setValue(Integer.parseInt(sampel.getString("jumlah")));
+            
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Tanggal.setDate(format.parse(sampel.getString("tanggal_uji")));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+            
+            if (sampel.getString("kondisi").equals("Baik")) {
+                Baik.setSelected(true);
+                Kurang.setSelected(false); 
+            } else {
+                Kurang.setSelected(true); 
+                Baik.setSelected(false);
+            }
+            
+            setState("edit");
+        }
     }//GEN-LAST:event_TablePegawaiMouseClicked
 
     private void ButtonTambahUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTambahUbahActionPerformed
-//        if (state.equals("index")) {
-//            if (Kode.getText().trim().equals("")) {
-//                JOptionPane.showMessageDialog(null, "Form Kode Masih Kosong !!!");
-//            } else if (Jenis.getText().trim().equals("")) {
-//                JOptionPane.showMessageDialog(null, "Form Jenis Sampel Masih Kosong !!!");
-//            } else {
-//                tambahData();
-//                resetForm();
-//                loadTable();
-//            }
-//        } else {
-//            if (Kode.getText().trim().equals("")) {
-//                JOptionPane.showMessageDialog(null, "Form Kode Masih Kosong !!!");
-//            } else if (Jenis.getText().trim().equals("")) {
-//                JOptionPane.showMessageDialog(null, "Form Jenis Sampel Masih Kosong !!!");
-//            } else {
-//                ubahData();
-//                resetForm();
-//                loadTable();
-//            }
-//        }
+        if (state.equals("index")) {
+            if (No.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form No Formulir Masih Kosong !!!");
+            } else if (Nama.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Nama Masih Kosong !!!");
+            } else if (Alamat.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Alamat Masih Kosong !!!");
+            } else if (Tanggal.getDate() == null) {
+                JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
+            } else if (!Baik.isSelected() && !Kurang.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Form Kondisi Belum Dipilih !!!");
+            } else {
+                tambahData();
+                resetForm();
+                loadTable();
+            }
+        } else {
+            if (No.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form No Formulir Masih Kosong !!!");
+            } else if (Nama.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Nama Masih Kosong !!!");
+            } else if (Alamat.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Alamat Masih Kosong !!!");
+            } else if (Tanggal.getDate() == null) {
+                JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
+            } else if (!Baik.isSelected() && !Kurang.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Form Kondisi Belum Dipilih !!!");
+            } else {
+                ubahData();
+                resetForm();
+                loadTable();
+            }
+        }
     }//GEN-LAST:event_ButtonTambahUbahActionPerformed
 
     private void ButtonResetHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonResetHapusActionPerformed

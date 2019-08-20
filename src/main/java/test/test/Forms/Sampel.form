@@ -398,7 +398,7 @@
           <StringArray count="5">
             <StringItem index="0" value="Metro Pusat"/>
             <StringItem index="1" value="Metro Timur"/>
-            <StringItem index="2" value="Metro Utama"/>
+            <StringItem index="2" value="Metro Utara"/>
             <StringItem index="3" value="Metro Barat"/>
             <StringItem index="4" value="Metro Selatan"/>
           </StringArray>
@@ -419,6 +419,9 @@
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="Tanggal">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelCari10">
       <Properties>
