@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: laila
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Tue, 20 Aug 2019 05:03:40 +0200
+-- Date: Tue, 20 Aug 2019 22:52:58 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -61,8 +61,12 @@ CREATE TABLE `hasil_uji` (
   `tanggal_uji` date NOT NULL,
   `hasil_uji` varchar(50) NOT NULL,
   `keterangan` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `id_jenis_pengujian` (`id_jenis_pengujian`),
+  KEY `id_sampel` (`id_sampel`),
+  CONSTRAINT `hasil_uji_ibfk_1` FOREIGN KEY (`id_jenis_pengujian`) REFERENCES `jenis_pengujian` (`id`),
+  CONSTRAINT `hasil_uji_ibfk_2` FOREIGN KEY (`id_sampel`) REFERENCES `sampel` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,11 +76,12 @@ CREATE TABLE `hasil_uji` (
 LOCK TABLES `hasil_uji` WRITE;
 /*!40000 ALTER TABLE `hasil_uji` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `hasil_uji` VALUES (1,4,1,'2019-08-01','Baik','aafasdfa'),(2,3,4,'2019-08-28','Baik','Kurang Baik');
 /*!40000 ALTER TABLE `hasil_uji` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `hasil_uji` with 0 row(s)
+-- Dumped table `hasil_uji` with 2 row(s)
 --
 
 --
@@ -168,7 +173,7 @@ CREATE TABLE `sampel` (
 LOCK TABLES `sampel` WRITE;
 /*!40000 ALTER TABLE `sampel` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `sampel` VALUES (3,3,4,'1241 241','qwrqw qrqwr','asf asfasdfa ','Metro Barat','2019-08-02',2,'Kurang Baik'),(4,1,4,'wertwet','34545wrtewer','ttwertwert','Metro Selatan','2019-08-03',0,'Baik');
+INSERT INTO `sampel` VALUES (3,3,4,'1241 241','qwrqw qrqwr','asf asfasdfa ','Metro Barat','2019-08-02',2,'Kurang Baik'),(4,1,4,'wertwet','34545wrtewer','ttwertwert','Metro Pusat','2019-08-03',0,'Baik');
 /*!40000 ALTER TABLE `sampel` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -185,4 +190,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 20 Aug 2019 05:03:40 +0200
+-- Dump completed on: Tue, 20 Aug 2019 22:52:58 +0200
