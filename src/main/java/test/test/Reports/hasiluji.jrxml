@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="hasiluji" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="33417fb6-bb47-4934-8811-4a4ffb06dd3f">
+	<property name="ireport.zoom" value="0.9090909090909131"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="83"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="165" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="141" uuid="920e0693-b5d1-4da3-92da-c61b39c82c35"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="299" height="141" uuid="58c6eb50-524f-45cd-a9f7-c4c3bd408973"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="34" y="65" width="230" height="20" uuid="b8900800-18ea-4b00-b94e-8cc956345ea4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DINAS KETAHANAN PANGAN PERTANIAN DAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="79" width="131" height="20" uuid="7238df89-c30c-445d-b9e5-87bccb989803"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERIKANAN KOTA METRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="92" width="228" height="20" uuid="a41856f0-bad3-44a8-93a9-3793465c36bb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[UPTD-RPH DAN LABORATORIUM KESMAVET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="106" width="228" height="20" uuid="a4819c21-4c27-40a7-9962-e592578fc63a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jl. Macan No 22 Hadimulyo Timur Kota Metro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="119" width="75" height="20" uuid="bde3fa40-3463-4b10-8d5e-c9311b5db17a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMULIR]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="141" width="555" height="24" uuid="4db090ab-5300-41e3-917a-3e5a6451ffd7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="213" y="145" width="167" height="20" uuid="2ba38f52-fdf3-4ae9-984a-54a4da719123"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HASIL UJI LABORATORIUM]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="299" y="0" width="100" height="20" uuid="5429f290-8e7f-44c0-9736-27681c590ce9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="299" y="20" width="100" height="20" uuid="417c9495-5427-4150-84a0-4263d495b5f2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="299" y="40" width="100" height="20" uuid="01aaf88f-31c3-4d40-89a3-811299e4f902"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="299" y="60" width="100" height="20" uuid="5f4eb23c-dd06-4187-8aee-16cbbdc31dc3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="299" y="80" width="100" height="20" uuid="03589871-f834-47b0-b123-ff77ba26b552"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="299" y="100" width="100" height="41" uuid="01034d9e-9717-4621-bf4b-4cae2b2c6646"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="299" y="0" width="100" height="20" uuid="38947c7e-fc07-420c-8f29-a45cf6fef160"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. Formulir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="20" width="100" height="20" uuid="f8a7ef8f-452a-4714-9671-93a23be1149f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Halaman]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="40" width="100" height="20" uuid="73bb2705-1eef-4e9e-a0a7-b365ceebad23"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Terbitan/Revisi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="60" width="100" height="20" uuid="9e6f65c1-467e-4c67-a402-921b62f49ce0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Terbitan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="79" width="100" height="20" uuid="a226497c-0325-4c18-9a44-bba9a82a7094"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Revisi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="100" width="100" height="20" uuid="6c9e387a-9891-4c65-9ba6-fa1a78ceb386"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Disetujui MM]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="399" y="0" width="12" height="20" uuid="445260cb-6513-4468-97e0-5a2fa7db08ac"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="399" y="0" width="12" height="20" uuid="8b501508-1991-46ba-84b7-c511d24b4023"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="399" y="20" width="12" height="20" uuid="6ad395a2-3243-4b59-8859-58a1d07351f9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="399" y="20" width="12" height="20" uuid="b52af669-07a3-440c-94ee-ec436c2668f7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="399" y="40" width="12" height="20" uuid="8da62a89-3611-4d86-ad22-4d6aad197bcb"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="399" y="40" width="12" height="20" uuid="dcbfbd00-b428-4456-919d-b1a62a4df755"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="399" y="60" width="12" height="20" uuid="cbaf66c8-383c-4292-ad89-f2b1a8373e2b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="399" y="60" width="12" height="20" uuid="a4ce9a7d-a019-4313-b63d-37c882e0af6a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="399" y="80" width="12" height="20" uuid="a954fe06-260f-4728-bf1f-09396a352a65"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="399" y="80" width="12" height="20" uuid="7795fed2-783d-44d2-80ee-58cf0277320b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="399" y="99" width="12" height="42" uuid="debdd7fd-c3ea-4936-8596-965fb906385a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="399" y="99" width="12" height="20" uuid="17648bb8-c6d2-405a-98f9-8088c8004e07"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="411" y="0" width="144" height="20" uuid="d3e3904a-8c3d-4c59-b69f-21dee2624b01"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="411" y="20" width="144" height="20" uuid="cf46eb92-e32d-462a-8d96-29b2c62a8958"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="411" y="40" width="144" height="20" uuid="1cc4d9c6-e1d0-40b4-aa97-1246ed758f52"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="411" y="59" width="144" height="20" uuid="9fc9e566-e269-4ad9-9fb5-859995e34e61"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="411" y="80" width="144" height="20" uuid="0a9a0116-d573-4744-b541-abd1d11f9ef9"/>
+			</rectangle>
+			<image>
+				<reportElement x="125" y="16" width="29" height="38" uuid="2cd19591-a8ed-438d-934b-43011423e64a"/>
+				<imageExpression><![CDATA["395px-LOGO_KOTA_METRO.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="157" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="18" width="100" height="20" uuid="1974f2a6-7098-4559-8ad9-c44a0c2106db"/>
+				<text><![CDATA[Nama Pemilik Contoh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="38" width="100" height="20" uuid="82a857a6-2451-46b9-a151-abbc6459c779"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="58" width="100" height="20" uuid="19390aae-2296-4353-8c72-315a32583a19"/>
+				<text><![CDATA[Jenis Contoh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="78" width="100" height="20" uuid="8f4e8eeb-e350-4d9a-b59d-727c600700a3"/>
+				<text><![CDATA[Nomor Contoh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="98" width="100" height="20" uuid="972798a4-b8dd-4562-8096-acab97778357"/>
+				<text><![CDATA[Tanggal Penerimaan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="118" width="100" height="20" uuid="1c17ed78-60e7-4432-8689-e2149d224194"/>
+				<text><![CDATA[Tanggal Pengujian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="18" width="11" height="20" uuid="14ebc465-d012-42c9-869d-e7f37069320b"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="38" width="11" height="20" uuid="0fb59705-4790-4c17-8235-835495632141"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="58" width="11" height="20" uuid="37ae56fa-8bab-4e24-9fae-3050014d223a"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="78" width="11" height="20" uuid="034119e9-903c-4d15-9b9d-bd7378357d97"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="98" width="11" height="20" uuid="b51e354c-23be-4528-b7ad-288a5fc3482a"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="118" width="11" height="20" uuid="b09668b0-adee-4730-9cf8-314031959902"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="58" width="100" height="20" uuid="9b10c1d6-4599-41f7-9328-4243f01e8175"/>
+				<text><![CDATA[Jumlah Contoh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="58" width="11" height="20" uuid="2b22cc7c-23e1-433f-8bda-52714190316e"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="61" height="20" uuid="340caf11-df44-40d7-947a-e90d91d9b23c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="1" width="61" height="20" uuid="47182149-69d8-4525-9815-6fdcd600adca"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="61" y="0" width="125" height="20" uuid="1b1eb598-e0e8-4aeb-97df-476533788029"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="64" y="1" width="122" height="20" uuid="1c514b2c-32cf-4c3f-8947-6b8056b9c476"/>
+				<text><![CDATA[Jenis Pengujian]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="186" y="0" width="183" height="20" uuid="1ec22847-75cd-47bf-ba42-2d9b40e87159"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="186" y="0" width="183" height="20" uuid="09361a60-834c-4c3b-805b-23a558111a83"/>
+				<text><![CDATA[Hasil Uji]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="369" y="0" width="189" height="20" uuid="cf0734d4-1240-4c56-8727-c8773a6fe664"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="369" y="0" width="186" height="20" uuid="ee44e655-4785-4ea1-86f7-304d3602749f"/>
+				<text><![CDATA[keterangan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="209" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="a4cea3fd-3d44-4850-8574-e73fd00a10e7"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Ket :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="141" height="20" uuid="cba11f71-ac1a-4696-9355-574fc3e74e10"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[TAP: Tidak Ada Perubahan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="83" width="62" height="20" uuid="09b7e496-a03f-4e09-9fcd-d09f1b330ad1"/>
+				<textElement textAlignment="Center">
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Mengetahui]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="103" width="82" height="20" uuid="f89c5b14-7001-4bd7-a379-fe0be6954f17"/>
+				<textElement textAlignment="Center">
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Kepala UPTD,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="166" width="82" height="20" uuid="a41d8c83-7078-4524-8ac9-fb2e514f473b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Ir. Rais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="186" width="141" height="20" uuid="47856c0c-22b0-412b-924e-2e13a14fcc84"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[NIP. 19641231 199803 1 035]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="186" width="141" height="20" uuid="51b0bf4f-7641-4cda-adc3-19979b6ca95d"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[NIP. 198007282006042019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="103" width="128" height="20" uuid="ea2de6b9-bc36-4b4a-ab17-3096e039d693"/>
+				<textElement textAlignment="Center">
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[An. Manajer Teknis,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="166" width="82" height="20" uuid="73f6a0e4-6e90-4f11-afee-21bfca3dc89d"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Sari Ulyati, S.Si]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
