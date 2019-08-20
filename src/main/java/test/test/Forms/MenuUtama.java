@@ -123,6 +123,11 @@ public class MenuUtama extends javax.swing.JFrame {
         });
 
         jButton11.setText("HASIL UJI");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setText("CETAK HASIL UJI");
 
@@ -269,6 +274,12 @@ public class MenuUtama extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        new Hasil().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments
