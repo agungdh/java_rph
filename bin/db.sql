@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: laila
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Sat, 24 Aug 2019 11:12:23 +0200
+-- Date: Sat, 24 Aug 2019 11:34:59 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -97,7 +97,7 @@ CREATE TABLE `jenis_pengujian` (
   PRIMARY KEY (`id`),
   KEY `id_sampel` (`id_sampel`),
   CONSTRAINT `jenis_pengujian_ibfk_1` FOREIGN KEY (`id_sampel`) REFERENCES `sampel` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,11 +107,12 @@ CREATE TABLE `jenis_pengujian` (
 LOCK TABLES `jenis_pengujian` WRITE;
 /*!40000 ALTER TABLE `jenis_pengujian` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `jenis_pengujian` VALUES (11,9,'Bau'),(12,10,'Reduktase'),(13,9,'CMT'),(14,9,'Warna');
 /*!40000 ALTER TABLE `jenis_pengujian` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `jenis_pengujian` with 0 row(s)
+-- Dumped table `jenis_pengujian` with 4 row(s)
 --
 
 --
@@ -163,7 +164,7 @@ CREATE TABLE `sampel` (
   PRIMARY KEY (`id`),
   KEY `id_kode_sampel` (`id_kode_sampel`),
   CONSTRAINT `sampel_ibfk_1` FOREIGN KEY (`id_kode_sampel`) REFERENCES `kode_sampel` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,12 +174,12 @@ CREATE TABLE `sampel` (
 LOCK TABLES `sampel` WRITE;
 /*!40000 ALTER TABLE `sampel` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `sampel` VALUES (9,7,1,'122111','Test 1','aa aa','Metro Utara','2019-08-03',1,'Kurang Baik');
+INSERT INTO `sampel` VALUES (9,7,1,'122111','Test 1','aa aa','Metro Utara','2019-08-03',1,'Kurang Baik'),(10,8,0,'444','Test 2','axcvbnxcvb','Metro Selatan','2019-08-10',4,'Baik');
 /*!40000 ALTER TABLE `sampel` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `sampel` with 1 row(s)
+-- Dumped table `sampel` with 2 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -190,4 +191,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sat, 24 Aug 2019 11:12:23 +0200
+-- Dump completed on: Sat, 24 Aug 2019 11:34:59 +0200
