@@ -109,8 +109,9 @@ public class Hasil extends javax.swing.JFrame {
             Base.close();
 
             Nama.setText(p.getString("nama"));
-            Kode.setText(kode.getString("kode"));
+            Kode.setText(kode.getString("kode") + p.getString("no_kode"));
             Jenis.setText(kode.getString("jenis_sampel"));
+            Formulir.setText(p.getString("no_formulir"));
         }
     }
     
@@ -281,6 +282,7 @@ public class Hasil extends javax.swing.JFrame {
         Nama.setText("");
         Kode.setText("");
         Jenis.setText("");
+        Formulir.setText("");
         Tanggal.setDate(null);
         Baik.setSelected(false);
         Kurang.setSelected(false);
@@ -325,6 +327,8 @@ public class Hasil extends javax.swing.JFrame {
         LabelCari11 = new javax.swing.JLabel();
         Hasil = new javax.swing.JTextField();
         LabelCari12 = new javax.swing.JLabel();
+        Formulir = new javax.swing.JTextField();
+        LabelCari13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hasil Uji");
@@ -459,6 +463,15 @@ public class Hasil extends javax.swing.JFrame {
 
         LabelCari12.setText("Hasil Uji");
 
+        Formulir.setEditable(false);
+        Formulir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FormulirActionPerformed(evt);
+            }
+        });
+
+        LabelCari13.setText("No Formulir");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -497,7 +510,11 @@ public class Hasil extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari11)
                                 .addGap(18, 18, 18)
-                                .addComponent(Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelCari13)
+                                .addGap(18, 18, 18)
+                                .addComponent(Formulir, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -579,19 +596,19 @@ public class Hasil extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelCari3)
                             .addComponent(JenisUji, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LabelCari11)
-                            .addComponent(Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LabelCari12)
-                            .addComponent(Hasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabelCari12)
+                        .addComponent(Hasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabelCari11)
+                        .addComponent(Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelCari13)
+                    .addComponent(Formulir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonRefresh)
                     .addComponent(ButtonTambahUbah)
@@ -731,6 +748,10 @@ public class Hasil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_HasilActionPerformed
 
+    private void FormulirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormulirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FormulirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -834,6 +855,7 @@ public class Hasil extends javax.swing.JFrame {
     private javax.swing.JButton ButtonRefresh;
     private javax.swing.JButton ButtonResetHapus;
     private javax.swing.JButton ButtonTambahUbah;
+    private javax.swing.JTextField Formulir;
     private javax.swing.JTextField Hasil;
     private javax.swing.JTextField Jenis;
     private javax.swing.JComboBox<String> JenisUji;
@@ -844,6 +866,7 @@ public class Hasil extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCari10;
     private javax.swing.JLabel LabelCari11;
     private javax.swing.JLabel LabelCari12;
+    private javax.swing.JLabel LabelCari13;
     private javax.swing.JLabel LabelCari2;
     private javax.swing.JLabel LabelCari3;
     private javax.swing.JLabel LabelCari4;
