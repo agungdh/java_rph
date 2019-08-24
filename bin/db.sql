@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: laila
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Sat, 24 Aug 2019 11:34:59 +0200
+-- Date: Sat, 24 Aug 2019 11:51:37 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -191,4 +191,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sat, 24 Aug 2019 11:34:59 +0200
+-- Dump completed on: Sat, 24 Aug 2019 11:51:37 +0200
