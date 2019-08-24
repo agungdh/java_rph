@@ -156,6 +156,7 @@ public class Hasil extends javax.swing.JFrame {
         model.addColumn("Nama Sampel");
         model.addColumn("Kode Sampel");
         model.addColumn("Jenis Sampel");
+        model.addColumn("Jenis Pengujian");
         model.addColumn("Tanggal Uji");
         model.addColumn("Hasil Uji");
         model.addColumn("Keterangan");
@@ -170,13 +171,14 @@ public class Hasil extends javax.swing.JFrame {
                 
                 SampelModel sampel = hasilUji.parent(SampelModel.class);
                 KodeSampelModel kodeSampel = sampel.parent(KodeSampelModel.class);
-                JenisPengujianModel jenisPengujian = sampel.parent(JenisPengujianModel.class);
+                JenisPengujianModel jenisPengujian = hasilUji.parent(JenisPengujianModel.class);
                 
                 model.addRow(new Object[]{
                     hasilUji.getId(),
                     sampel.getString("nama"),
                     kodeSampel.getString("kode"),
                     kodeSampel.getString("jenis_sampel"),
+                    jenisPengujian.getString("nama_jenis_pengujian"),
                     parsedtanggal,
                     hasilUji.getString("hasil_uji"),
                     hasilUji.getString("keterangan")
