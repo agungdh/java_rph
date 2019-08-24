@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: laila
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Tue, 20 Aug 2019 22:52:58 +0200
+-- Date: Sat, 24 Aug 2019 10:56:40 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `alamat` varchar(100) NOT NULL,
   `jenis_kelamin` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,11 +41,12 @@ CREATE TABLE `admin` (
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `admin` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','admin','admin','admin','admin');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `admin` with 0 row(s)
+-- Dumped table `admin` with 1 row(s)
 --
 
 --
@@ -66,7 +67,7 @@ CREATE TABLE `hasil_uji` (
   KEY `id_sampel` (`id_sampel`),
   CONSTRAINT `hasil_uji_ibfk_1` FOREIGN KEY (`id_jenis_pengujian`) REFERENCES `jenis_pengujian` (`id`),
   CONSTRAINT `hasil_uji_ibfk_2` FOREIGN KEY (`id_sampel`) REFERENCES `sampel` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +77,7 @@ CREATE TABLE `hasil_uji` (
 LOCK TABLES `hasil_uji` WRITE;
 /*!40000 ALTER TABLE `hasil_uji` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `hasil_uji` VALUES (1,4,1,'2019-08-01','Baik','aafasdfa'),(2,3,4,'2019-08-28','Baik','Kurang Baik');
+INSERT INTO `hasil_uji` VALUES (6,6,8,'2019-08-03','+','Baik'),(7,6,9,'2019-08-03','-','Kurang Baik');
 /*!40000 ALTER TABLE `hasil_uji` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -92,9 +93,12 @@ COMMIT;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `jenis_pengujian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_sampel` int(11) DEFAULT NULL,
   `nama_jenis_pengujian` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `id_sampel` (`id_sampel`),
+  CONSTRAINT `jenis_pengujian_ibfk_1` FOREIGN KEY (`id_sampel`) REFERENCES `sampel` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,12 +108,12 @@ CREATE TABLE `jenis_pengujian` (
 LOCK TABLES `jenis_pengujian` WRITE;
 /*!40000 ALTER TABLE `jenis_pengujian` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `jenis_pengujian` VALUES (1,'satu 2'),(4,'test');
+INSERT INTO `jenis_pengujian` VALUES (6,NULL,'CMT'),(7,NULL,'Berat Jenis'),(8,NULL,'Alkohol'),(9,NULL,'Reduktase'),(10,NULL,'pH');
 /*!40000 ALTER TABLE `jenis_pengujian` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `jenis_pengujian` with 2 row(s)
+-- Dumped table `jenis_pengujian` with 5 row(s)
 --
 
 --
@@ -123,7 +127,7 @@ CREATE TABLE `kode_sampel` (
   `jenis_sampel` varchar(50) NOT NULL,
   `kode` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,12 +137,12 @@ CREATE TABLE `kode_sampel` (
 LOCK TABLES `kode_sampel` WRITE;
 /*!40000 ALTER TABLE `kode_sampel` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `kode_sampel` VALUES (1,'Daging','DG1'),(2,'Daging','DG2'),(3,'Kulit','KL1'),(4,'Kulit','KL2');
+INSERT INTO `kode_sampel` VALUES (6,'Daging','DG'),(7,'Kulit','KL'),(8,'MIE AYAM','MA');
 /*!40000 ALTER TABLE `kode_sampel` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `kode_sampel` with 4 row(s)
+-- Dumped table `kode_sampel` with 3 row(s)
 --
 
 --
@@ -150,20 +154,18 @@ COMMIT;
 CREATE TABLE `sampel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_kode_sampel` int(11) NOT NULL,
-  `id_jenis_pengujian` int(11) NOT NULL,
+  `no_kode` int(11) NOT NULL,
   `no_formulir` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `kecamatan` varchar(50) NOT NULL,
-  `tanggal_uji` date NOT NULL,
+  `tanggal_sample` date NOT NULL,
   `jumlah` int(11) NOT NULL,
   `kondisi` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_kode_sampel` (`id_kode_sampel`),
-  KEY `id_jenis_pengujian` (`id_jenis_pengujian`),
-  CONSTRAINT `sampel_ibfk_1` FOREIGN KEY (`id_kode_sampel`) REFERENCES `kode_sampel` (`id`),
-  CONSTRAINT `sampel_ibfk_2` FOREIGN KEY (`id_jenis_pengujian`) REFERENCES `jenis_pengujian` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  CONSTRAINT `sampel_ibfk_1` FOREIGN KEY (`id_kode_sampel`) REFERENCES `kode_sampel` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,12 +175,12 @@ CREATE TABLE `sampel` (
 LOCK TABLES `sampel` WRITE;
 /*!40000 ALTER TABLE `sampel` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `sampel` VALUES (3,3,4,'1241 241','qwrqw qrqwr','asf asfasdfa ','Metro Barat','2019-08-02',2,'Kurang Baik'),(4,1,4,'wertwet','34545wrtewer','ttwertwert','Metro Pusat','2019-08-03',0,'Baik');
+INSERT INTO `sampel` VALUES (6,6,1,'1234','Kambing 123','Dimana','Metro Utara','2019-08-03',2,'Baik'),(7,6,0,'1234','nn','nm','Metro Pusat','2019-08-24',1,'Baik'),(8,6,1,'4','bejo','metro','Metro Pusat','2019-08-24',1,'Baik');
 /*!40000 ALTER TABLE `sampel` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `sampel` with 2 row(s)
+-- Dumped table `sampel` with 3 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -190,4 +192,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 20 Aug 2019 22:52:58 +0200
+-- Dump completed on: Sat, 24 Aug 2019 10:56:40 +0200
