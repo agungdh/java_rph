@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: laila
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Sat, 24 Aug 2019 10:56:40 +0200
+-- Date: Sat, 24 Aug 2019 11:12:23 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -77,12 +77,11 @@ CREATE TABLE `hasil_uji` (
 LOCK TABLES `hasil_uji` WRITE;
 /*!40000 ALTER TABLE `hasil_uji` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `hasil_uji` VALUES (6,6,8,'2019-08-03','+','Baik'),(7,6,9,'2019-08-03','-','Kurang Baik');
 /*!40000 ALTER TABLE `hasil_uji` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `hasil_uji` with 2 row(s)
+-- Dumped table `hasil_uji` with 0 row(s)
 --
 
 --
@@ -108,12 +107,11 @@ CREATE TABLE `jenis_pengujian` (
 LOCK TABLES `jenis_pengujian` WRITE;
 /*!40000 ALTER TABLE `jenis_pengujian` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `jenis_pengujian` VALUES (6,NULL,'CMT'),(7,NULL,'Berat Jenis'),(8,NULL,'Alkohol'),(9,NULL,'Reduktase'),(10,NULL,'pH');
 /*!40000 ALTER TABLE `jenis_pengujian` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `jenis_pengujian` with 5 row(s)
+-- Dumped table `jenis_pengujian` with 0 row(s)
 --
 
 --
@@ -159,13 +157,13 @@ CREATE TABLE `sampel` (
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `kecamatan` varchar(50) NOT NULL,
-  `tanggal_sample` date NOT NULL,
+  `tanggal_sampel` date NOT NULL,
   `jumlah` int(11) NOT NULL,
   `kondisi` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_kode_sampel` (`id_kode_sampel`),
   CONSTRAINT `sampel_ibfk_1` FOREIGN KEY (`id_kode_sampel`) REFERENCES `kode_sampel` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,12 +173,12 @@ CREATE TABLE `sampel` (
 LOCK TABLES `sampel` WRITE;
 /*!40000 ALTER TABLE `sampel` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `sampel` VALUES (6,6,1,'1234','Kambing 123','Dimana','Metro Utara','2019-08-03',2,'Baik'),(7,6,0,'1234','nn','nm','Metro Pusat','2019-08-24',1,'Baik'),(8,6,1,'4','bejo','metro','Metro Pusat','2019-08-24',1,'Baik');
+INSERT INTO `sampel` VALUES (9,7,1,'122111','Test 1','aa aa','Metro Utara','2019-08-03',1,'Kurang Baik');
 /*!40000 ALTER TABLE `sampel` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `sampel` with 3 row(s)
+-- Dumped table `sampel` with 1 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -192,4 +190,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sat, 24 Aug 2019 10:56:40 +0200
+-- Dump completed on: Sat, 24 Aug 2019 11:12:23 +0200
