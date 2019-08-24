@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="hasiluji" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="33417fb6-bb47-4934-8811-4a4ffb06dd3f">
-	<property name="ireport.zoom" value="1.4641000000000095"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="295"/>
+	<property name="ireport.zoom" value="2.1435888100000144"/>
+	<property name="ireport.x" value="558"/>
+	<property name="ireport.y" value="91"/>
 	<parameter name="no_form" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -16,12 +16,12 @@ h.hasil_uji h_hasil_uji,
 h.keterangan h_keterangan,
 s.id s_id,
 s.id_kode_sampel s_id_kode_sampel,
-s.id_jenis_pengujian s_id_jenis_pengujian,
+h.id_jenis_pengujian h_id_jenis_pengujian,
 s.no_formulir s_no_formulir,
 s.nama s_nama,
 s.alamat s_alamat,
 s.kecamatan s_kecamatan,
-s.tanggal_uji s_tanggal_uji,
+s.tanggal_sampel s_tanggal_sampel,
 s.jumlah s_jumlah,
 s.kondisi s_kondisi,
 k.id k_id,
@@ -29,11 +29,13 @@ k.jenis_sampel k_jenis_sampel,
 k.kode k_kode,
 j.id j_id,
 j.nama_jenis_pengujian j_nama_jenis_pengujian,
-concat(lpad(day(s.tanggal_uji), 2, 0), '-', lpad(month(s.tanggal_uji), 2, 0), '-', year(s.tanggal_uji)) s_tanggal_uji_parsed
+concat(lpad(day(s.tanggal_sampel), 2, 0), '-', lpad(month(s.tanggal_sampel), 2, 0), '-', year(s.tanggal_sampel)) s_tanggal_sampel_parsed,
+concat(lpad(day(h.tanggal_uji), 2, 0), '-', lpad(month(h.tanggal_uji), 2, 0), '-', year(h.tanggal_uji)) h_tanggal_uji_parsed,
+concat(lpad(day(now()), 2, 0), '-', lpad(month(now()), 2, 0), '-', year(now())) tanggal_now
 FROM hasil_uji h, sampel s, kode_sampel k, jenis_pengujian j
 WHERE h.id_sampel = s.id
 AND s.id_kode_sampel = k.id
-AND s.id_jenis_pengujian = j.id
+AND h.id_jenis_pengujian = j.id
 AND s.no_formulir = $P{no_form}]]>
 	</queryString>
 	<field name="h_id" class="java.lang.Integer"/>
@@ -44,12 +46,11 @@ AND s.no_formulir = $P{no_form}]]>
 	<field name="h_keterangan" class="java.lang.String"/>
 	<field name="s_id" class="java.lang.Integer"/>
 	<field name="s_id_kode_sampel" class="java.lang.Integer"/>
-	<field name="s_id_jenis_pengujian" class="java.lang.Integer"/>
 	<field name="s_no_formulir" class="java.lang.String"/>
 	<field name="s_nama" class="java.lang.String"/>
 	<field name="s_alamat" class="java.lang.String"/>
 	<field name="s_kecamatan" class="java.lang.String"/>
-	<field name="s_tanggal_uji" class="java.sql.Date"/>
+	<field name="s_tanggal_sampel" class="java.sql.Date"/>
 	<field name="s_jumlah" class="java.lang.Integer"/>
 	<field name="s_kondisi" class="java.lang.String"/>
 	<field name="k_id" class="java.lang.Integer"/>
@@ -57,7 +58,9 @@ AND s.no_formulir = $P{no_form}]]>
 	<field name="k_kode" class="java.lang.String"/>
 	<field name="j_id" class="java.lang.Integer"/>
 	<field name="j_nama_jenis_pengujian" class="java.lang.String"/>
-	<field name="s_tanggal_uji_parsed" class="java.lang.String"/>
+	<field name="s_tanggal_sampel_parsed" class="java.lang.String"/>
+	<field name="h_tanggal_uji_parsed" class="java.lang.String"/>
+	<field name="tanggal_now" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -259,7 +262,7 @@ AND s.no_formulir = $P{no_form}]]>
 			</textField>
 			<textField>
 				<reportElement x="411" y="59" width="141" height="20" uuid="de90207e-7110-4f86-ad36-c998b09ec9d1"/>
-				<textFieldExpression><![CDATA[$F{s_tanggal_uji_parsed}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tanggal_now}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -286,10 +289,6 @@ AND s.no_formulir = $P{no_form}]]>
 				<text><![CDATA[Tanggal Penerimaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="118" width="100" height="20" uuid="1c17ed78-60e7-4432-8689-e2149d224194"/>
-				<text><![CDATA[Tanggal Pengujian]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="100" y="18" width="11" height="20" uuid="14ebc465-d012-42c9-869d-e7f37069320b"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
@@ -307,10 +306,6 @@ AND s.no_formulir = $P{no_form}]]>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="98" width="11" height="20" uuid="b51e354c-23be-4528-b7ad-288a5fc3482a"/>
-				<text><![CDATA[:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="100" y="118" width="11" height="20" uuid="b09668b0-adee-4730-9cf8-314031959902"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
@@ -339,11 +334,7 @@ AND s.no_formulir = $P{no_form}]]>
 			</textField>
 			<textField>
 				<reportElement x="116" y="98" width="183" height="20" uuid="8e37acc6-38d8-4e5d-bde2-75756ad10169"/>
-				<textFieldExpression><![CDATA[$F{s_tanggal_uji_parsed}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="116" y="118" width="183" height="20" uuid="a945fa2d-0c84-4570-8b96-f63bf432377e"/>
-				<textFieldExpression><![CDATA[$F{s_tanggal_uji_parsed}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{s_tanggal_sampel_parsed}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="116" y="18" width="183" height="20" uuid="05061c90-b656-4a0f-b5b4-c9dd2d89dc19"/>
@@ -354,6 +345,9 @@ AND s.no_formulir = $P{no_form}]]>
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<rectangle>
+				<reportElement x="61" y="0" width="104" height="20" uuid="7f2299e4-97b6-42c6-afbe-4a94ed5ee1da"/>
+			</rectangle>
+			<rectangle>
 				<reportElement x="0" y="0" width="61" height="20" uuid="340caf11-df44-40d7-947a-e90d91d9b23c"/>
 			</rectangle>
 			<staticText>
@@ -361,30 +355,37 @@ AND s.no_formulir = $P{no_form}]]>
 				<text><![CDATA[No]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="61" y="0" width="125" height="20" uuid="1b1eb598-e0e8-4aeb-97df-476533788029"/>
+				<reportElement x="165" y="0" width="82" height="20" uuid="1b1eb598-e0e8-4aeb-97df-476533788029"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="64" y="1" width="122" height="20" uuid="1c514b2c-32cf-4c3f-8947-6b8056b9c476"/>
+				<reportElement x="165" y="1" width="82" height="20" uuid="1c514b2c-32cf-4c3f-8947-6b8056b9c476"/>
 				<text><![CDATA[Jenis Pengujian]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="186" y="0" width="183" height="20" uuid="1ec22847-75cd-47bf-ba42-2d9b40e87159"/>
+				<reportElement x="248" y="1" width="183" height="20" uuid="1ec22847-75cd-47bf-ba42-2d9b40e87159"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="186" y="0" width="183" height="20" uuid="09361a60-834c-4c3b-805b-23a558111a83"/>
+				<reportElement x="249" y="0" width="183" height="20" uuid="09361a60-834c-4c3b-805b-23a558111a83"/>
 				<text><![CDATA[Hasil Uji]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="369" y="0" width="186" height="20" uuid="cf0734d4-1240-4c56-8727-c8773a6fe664"/>
+				<reportElement x="432" y="0" width="123" height="20" uuid="cf0734d4-1240-4c56-8727-c8773a6fe664"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="369" y="0" width="186" height="20" uuid="ee44e655-4785-4ea1-86f7-304d3602749f"/>
+				<reportElement x="432" y="0" width="123" height="20" uuid="ee44e655-4785-4ea1-86f7-304d3602749f"/>
 				<text><![CDATA[keterangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="0" width="104" height="20" uuid="d6fe11f5-0c4d-4b1f-a086-02ecea9707c2"/>
+				<text><![CDATA[No]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="165" y="1" width="84" height="20" uuid="ce224980-b347-4986-a937-0b0eb7f5b46c"/>
+			</rectangle>
 			<rectangle>
 				<reportElement x="0" y="0" width="61" height="20" uuid="751bdc41-8b75-4572-9f31-094df9debd55"/>
 			</rectangle>
@@ -393,25 +394,29 @@ AND s.no_formulir = $P{no_form}]]>
 				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="61" y="0" width="125" height="20" uuid="ce224980-b347-4986-a937-0b0eb7f5b46c"/>
+				<reportElement x="248" y="0" width="183" height="20" uuid="ffb40e6a-4e5e-41e3-9a62-da010f9a2005"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="186" y="0" width="183" height="20" uuid="ffb40e6a-4e5e-41e3-9a62-da010f9a2005"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="369" y="0" width="186" height="20" uuid="b4b039f8-88c5-4ea0-962b-fc456a024430"/>
+				<reportElement x="432" y="0" width="123" height="20" uuid="b4b039f8-88c5-4ea0-962b-fc456a024430"/>
 			</rectangle>
 			<textField>
-				<reportElement x="64" y="1" width="122" height="20" uuid="505e6d3c-380f-430a-ab97-c01e42a81f0f"/>
+				<reportElement x="165" y="1" width="82" height="20" uuid="505e6d3c-380f-430a-ab97-c01e42a81f0f"/>
 				<textFieldExpression><![CDATA[$F{j_nama_jenis_pengujian}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="186" y="1" width="183" height="20" uuid="a842f1cf-5a9c-4a7e-b479-429504a60e4c"/>
+				<reportElement x="250" y="0" width="183" height="20" uuid="a842f1cf-5a9c-4a7e-b479-429504a60e4c"/>
 				<textFieldExpression><![CDATA[$F{h_hasil_uji}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="369" y="1" width="183" height="20" uuid="cb6642fb-0a7a-4b54-9c59-f5257534d94d"/>
+				<reportElement x="432" y="1" width="120" height="20" uuid="cb6642fb-0a7a-4b54-9c59-f5257534d94d"/>
 				<textFieldExpression><![CDATA[$F{h_keterangan}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="61" y="1" width="104" height="20" uuid="609527a9-5f24-45a2-b403-c981763d6d06"/>
+			</rectangle>
+			<textField>
+				<reportElement x="61" y="1" width="104" height="20" uuid="b3ffb6ef-2077-4251-9b05-16ee71939dd1"/>
+				<textFieldExpression><![CDATA[$F{h_tanggal_uji_parsed}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
