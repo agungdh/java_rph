@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan_baru" language="groovy" pageWidth="870" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="830" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42ab6fc8-c5eb-47e5-84eb-edeefa991ac8">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="134"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+concat(lpad(day(h.tanggal_uji), 2, 0), '-', lpad(month(h.tanggal_uji), 2, 0), '-', year(h.tanggal_uji)) tanggal_uji,
+h.id no_analisis,
+s.alamat alamat,
+s.kecamatan kecamatan,
+k.jenis_sampel,
+j.nama_jenis_pengujian,
+h.hasil_uji,
+h.keterangan
+FROM hasil_uji h, sampel s, jenis_pengujian j, kode_sampel k
+WHERE h.id_sampel = s.id
+AND h.id_jenis_pengujian = j.id
+AND s.id_kode_sampel = k.id]]>
+	</queryString>
+	<field name="tanggal_uji" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_analisis" class="java.lang.Integer"/>
+	<field name="alamat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kecamatan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jenis_sampel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_jenis_pengujian" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hasil_uji" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keterangan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<columnHeader>
+		<band height="30">
+			<rectangle>
+				<reportElement x="0" y="0" width="23" height="30" uuid="cd85bd27-a49a-490c-9157-18e3f260cd1b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="23" height="30" uuid="33c2cbc1-252c-407c-bfad-93d41e005b3b"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="23" y="0" width="53" height="30" uuid="4e5d7643-1701-446a-8b54-58669d8a91d4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="23" y="0" width="53" height="30" uuid="52532b21-fb43-42cc-b9ee-e714b8b62908"/>
+				<text><![CDATA[Tanggal Pengujian]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="76" y="0" width="38" height="30" uuid="c8a8aa4c-e5da-4a1c-b503-b489c5f26dc5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="76" y="0" width="38" height="30" uuid="5aadba52-ba0d-4741-bef6-6751e847029e"/>
+				<text><![CDATA[No Analisis]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="114" y="0" width="159" height="30" uuid="068b280b-3f92-4aaa-a531-dbbc1856a31a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="114" y="0" width="159" height="30" uuid="7b51bbd7-12ca-4f98-8498-1dcc00412ac6"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="273" y="0" width="99" height="30" uuid="38f1a6ad-2b7d-4362-b60a-b81fb0f78936"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="273" y="0" width="99" height="30" uuid="25849886-ff4f-4d24-87d3-8e70a31ed560"/>
+				<text><![CDATA[Kecamatan]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="372" y="0" width="99" height="30" uuid="33a26253-c0a2-4ad9-80ce-c3660de84792"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="372" y="0" width="99" height="30" uuid="ec07ddef-6cb9-4e6e-b3eb-3b524a4601a7"/>
+				<text><![CDATA[Jenis Sampel]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="471" y="0" width="126" height="30" uuid="4240e663-6338-4e2f-814e-3dd92c878217"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="471" y="0" width="126" height="30" uuid="de2ebec5-d8d3-4567-998d-c5b932cf7a86"/>
+				<text><![CDATA[Jenis Pengujian]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="597" y="0" width="134" height="30" uuid="c7b55d0d-bda8-4b14-b55c-f824bb10db92"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="597" y="0" width="134" height="30" uuid="8b4d5046-9b69-4317-856e-3c704aa070a4"/>
+				<text><![CDATA[Hasil Pengujian]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="731" y="0" width="99" height="30" uuid="b87851a9-5a5a-4116-a2d0-9df29e9f3e6a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="731" y="0" width="99" height="30" uuid="d0293bb0-5e5d-4ef3-8210-96ed3cbae34e"/>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="23" height="15" uuid="e23b91e5-7d94-4b9e-971d-899395c893b3"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="23" height="15" uuid="7f91be2c-6d4b-431b-a5c2-d39a611260b8"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="23" y="0" width="53" height="15" uuid="1069dded-a0ea-4ce9-b7c6-7a22d2734236"/>
+			</rectangle>
+			<textField>
+				<reportElement x="23" y="0" width="53" height="15" uuid="49cfc9db-6628-436b-af02-6446d6dfb1a8"/>
+				<textFieldExpression><![CDATA[$F{tanggal_uji}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="76" y="0" width="38" height="15" uuid="810fd9b4-c84f-4a31-9094-dc0869ca07f7"/>
+			</rectangle>
+			<textField>
+				<reportElement x="76" y="0" width="38" height="15" uuid="57ff2c9d-0fd2-4ae1-bbe2-b1057f6b2924"/>
+				<textFieldExpression><![CDATA[$F{no_analisis}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="114" y="0" width="159" height="15" uuid="6ce9a749-8c7d-4999-8bf7-444b8f299a39"/>
+			</rectangle>
+			<textField>
+				<reportElement x="114" y="0" width="159" height="15" uuid="0546f385-aaa0-4fb2-8a8a-8cb0e5d0c827"/>
+				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="273" y="0" width="99" height="15" uuid="9014c06d-9296-4590-b893-a86b0f84e9a4"/>
+			</rectangle>
+			<textField>
+				<reportElement x="273" y="0" width="99" height="15" uuid="ab73ebb5-3efd-462f-96c9-4eb75a05a69c"/>
+				<textFieldExpression><![CDATA[$F{kecamatan}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="372" y="0" width="99" height="15" uuid="cd5ff997-147f-45c4-8cc8-faabe67cc7f9"/>
+			</rectangle>
+			<textField>
+				<reportElement x="372" y="0" width="99" height="15" uuid="62af8ee4-81c4-42a3-8cfa-0b0513573181"/>
+				<textFieldExpression><![CDATA[$F{jenis_sampel}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="471" y="0" width="126" height="15" uuid="e46ad2b0-f266-4bc9-ba69-6f4c74266d03"/>
+			</rectangle>
+			<textField>
+				<reportElement x="471" y="0" width="126" height="15" uuid="aa4f91d0-ffb3-4b15-a6a3-1aec9f1f56d6"/>
+				<textFieldExpression><![CDATA[$F{nama_jenis_pengujian}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="597" y="0" width="134" height="15" uuid="1beab92c-9fc1-4db4-b986-ff099285dc5b"/>
+			</rectangle>
+			<textField>
+				<reportElement x="597" y="0" width="134" height="15" uuid="39dccc32-8355-4c1d-9b64-f8610b715a0d"/>
+				<textFieldExpression><![CDATA[$F{hasil_uji}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="731" y="0" width="99" height="15" uuid="b31f3cd4-5e0f-4014-97dd-c9441a6687e9"/>
+			</rectangle>
+			<textField>
+				<reportElement x="731" y="0" width="99" height="15" uuid="c026ba7b-7929-45d9-99d6-2fc91040e0be"/>
+				<textFieldExpression><![CDATA[$F{keterangan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
