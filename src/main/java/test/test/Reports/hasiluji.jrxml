@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="hasiluji" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="33417fb6-bb47-4934-8811-4a4ffb06dd3f">
 	<property name="ireport.zoom" value="2.1435888100000144"/>
-	<property name="ireport.x" value="558"/>
-	<property name="ireport.y" value="91"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="575"/>
 	<parameter name="no_form" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -326,7 +326,7 @@ AND s.no_formulir = $P{no_form}]]>
 			</textField>
 			<textField>
 				<reportElement x="116" y="78" width="183" height="20" uuid="da07ba47-81a6-4927-901b-d37fd8a2147a"/>
-				<textFieldExpression><![CDATA[$F{s_id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{s_no_formulir}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="391" y="58" width="86" height="20" uuid="aad27334-3020-4463-8a6f-6073517d7838"/>
@@ -377,7 +377,7 @@ AND s.no_formulir = $P{no_form}]]>
 			</staticText>
 			<staticText>
 				<reportElement x="61" y="0" width="104" height="20" uuid="d6fe11f5-0c4d-4b1f-a086-02ecea9707c2"/>
-				<text><![CDATA[No]]></text>
+				<text><![CDATA[Tanggal Uji]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
