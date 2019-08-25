@@ -25,7 +25,8 @@ FROM hasil_uji h, sampel s, jenis_pengujian j, kode_sampel k
 WHERE h.id_sampel = s.id
 AND h.id_jenis_pengujian = j.id
 AND s.id_kode_sampel = k.id
-AND h.tanggal_uji BETWEEN $P{tggl_a} AND $P{tggl_b}]]>
+AND h.tanggal_uji BETWEEN $P{tggl_a} AND $P{tggl_b}
+ORDER BY h.tanggal_uji ASC]]>
 	</queryString>
 	<field name="tanggal_uji" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>

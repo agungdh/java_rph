@@ -20,7 +20,8 @@ FROM hasil_uji h, sampel s, jenis_pengujian j, kode_sampel k
 WHERE h.id_sampel = s.id
 AND h.id_jenis_pengujian = j.id
 AND s.id_kode_sampel = k.id
-AND s.kecamatan = $P{kecamatan}]]>
+AND s.kecamatan = $P{kecamatan}
+ORDER BY h.tanggal_uji ASC]]>
 	</queryString>
 	<field name="tanggal_uji" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
