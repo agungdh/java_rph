@@ -162,22 +162,22 @@ public class Laporan extends javax.swing.JFrame {
         try{
             Config objkoneksi = new Config();
             Connection con = objkoneksi.bukakoneksi();
-            String fileName="src/main/java/test/test/Reports/laporan.jrxml";
-            String filetoFill="src/main/java/test/test/Reports/laporan.jasper";
+            String fileName="src/main/java/test/test/Reports/laporan_baru.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/laporan_baru.jasper";
             JasperCompileManager.compileReport(fileName);
             
             Map param= new HashMap();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String Dawal = dateFormat.format(awal.getDate());
             String Dakhir = dateFormat.format(akhir.getDate());
-            param.put("awal", Dawal);
-            param.put("akhir", Dakhir);
+            param.put("tggl_a", Dawal);
+            param.put("tggl_b", Dakhir);
             
             dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             Dawal = dateFormat.format(awal.getDate());
             Dakhir = dateFormat.format(akhir.getDate());
-            param.put("tanggal_awal", Dawal);
-            param.put("tanggal_akhir", Dakhir);
+            param.put("txt_tggl_a", Dawal);
+            param.put("txt_tggl_b", Dakhir);
             
             JasperFillManager.fillReport(filetoFill, param, con);
             JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);

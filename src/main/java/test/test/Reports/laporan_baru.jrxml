@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan_baru" language="groovy" pageWidth="870" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="830" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42ab6fc8-c5eb-47e5-84eb-edeefa991ac8">
-	<property name="ireport.zoom" value="1.1000000000000012"/>
+	<property name="ireport.zoom" value="1.2100000000000017"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="txt_tggl_a" class="java.lang.String"/>
+	<parameter name="txt_tggl_b" class="java.lang.String"/>
+	<parameter name="tggl_a" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tggl_b" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
 concat(lpad(day(h.tanggal_uji), 2, 0), '-', lpad(month(h.tanggal_uji), 2, 0), '-', year(h.tanggal_uji)) tanggal_uji,
@@ -16,7 +24,8 @@ h.keterangan
 FROM hasil_uji h, sampel s, jenis_pengujian j, kode_sampel k
 WHERE h.id_sampel = s.id
 AND h.id_jenis_pengujian = j.id
-AND s.id_kode_sampel = k.id]]>
+AND s.id_kode_sampel = k.id
+AND h.tanggal_uji BETWEEN $P{tggl_a} AND $P{tggl_b}]]>
 	</queryString>
 	<field name="tanggal_uji" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -41,7 +50,75 @@ AND s.id_kode_sampel = k.id]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<title>
-		<band height="124" splitType="Stretch"/>
+		<band height="169" splitType="Stretch">
+			<staticText>
+				<reportElement x="305" y="0" width="292" height="20" uuid="e126b84a-c37d-4c98-b13a-1c6c1852548f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN HASIL PENGUJIAN LABORATORIUM KESMAVET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="125" height="20" uuid="94c8069e-3e70-4c6b-9b7d-3ea0ae6447a4"/>
+				<text><![CDATA[Nama Laboratorium]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="125" height="20" uuid="c81f4872-1398-42d0-9a61-deeda27b3ad3"/>
+				<text><![CDATA[Nama Penanggung Jawab]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="125" height="20" uuid="c7b8e2fe-bb9e-445b-b82c-9a5b34376ff8"/>
+				<text><![CDATA[Provinsi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="125" height="20" uuid="60427302-c83f-4e0c-9bca-12d4d9db0199"/>
+				<text><![CDATA[Kabupaten/Kota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="125" height="20" uuid="c63c9239-19d7-4fa1-b81d-b6b4a68df255"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="40" width="10" height="20" uuid="17eba7f2-4f67-40b8-8c53-89ce79e38bd7"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="60" width="10" height="20" uuid="41ec8236-c8da-42d9-9b4c-2ed7fe127dac"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="80" width="10" height="20" uuid="1f8081ed-1b3b-449d-b5a4-35aaa22c5667"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="100" width="10" height="20" uuid="2d2e67c8-ed0e-4adb-895e-016b15b6681e"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="120" width="10" height="20" uuid="106cb518-8b1e-483e-8fb9-f8e80aa5e3c0"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="40" width="125" height="20" uuid="bdafc288-c12c-402a-b9d2-987bf9009ada"/>
+				<text><![CDATA[Laboratorium Kesmavet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="60" width="125" height="20" uuid="46791052-0a87-4d7b-84ad-e2e1458b48b7"/>
+				<text><![CDATA[Ir. Rais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="80" width="125" height="20" uuid="8820b59b-4751-4143-bc64-c9d1099d03ab"/>
+				<text><![CDATA[Lampung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="100" width="125" height="20" uuid="de7727f4-ca85-4104-a9f8-63c078ccf359"/>
+				<text><![CDATA[Kota Metro]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="120" width="188" height="20" uuid="0e2ebfc8-fb17-45d8-8df4-12e803c3fba5"/>
+				<textFieldExpression><![CDATA[$P{txt_tggl_a} + " - " + $P{txt_tggl_b}]]></textFieldExpression>
+			</textField>
+		</band>
 	</title>
 	<columnHeader>
 		<band height="30">
