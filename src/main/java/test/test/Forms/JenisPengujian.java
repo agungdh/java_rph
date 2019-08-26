@@ -156,7 +156,7 @@ public class JenisPengujian extends javax.swing.JFrame {
                     jenisPengujian.getId(),
                     sampel.getString("no_formulir"),
                     sampel.getString("nama"),
-                    kodeSampel.getString("kode"),
+                    kodeSampel.getString("kode") + sampel.getString("no_kode"),
                     kodeSampel.getString("jenis_sampel"),
                     jenisPengujian.getString("nama_jenis_pengujian"),
                 });
