@@ -153,6 +153,7 @@ public class Hasil extends javax.swing.JFrame {
         model = new DefaultTableModel();
                 
         model.addColumn("#ID");
+        model.addColumn("No Formulir");
         model.addColumn("Nama Sampel");
         model.addColumn("Kode Sampel");
         model.addColumn("Jenis Sampel");
@@ -175,6 +176,7 @@ public class Hasil extends javax.swing.JFrame {
                 
                 model.addRow(new Object[]{
                     hasilUji.getId(),
+                    sampel.getString("no_formulir"),
                     sampel.getString("nama"),
                     kodeSampel.getString("kode") + sampel.getString("no_kode"),
                     kodeSampel.getString("jenis_sampel"),
@@ -208,7 +210,7 @@ public class Hasil extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<HasilUjiModel> hasilUjis = HasilUjiModel.where("id like ?", '%' + cari + '%').orderBy("id desc");
+        LazyList<HasilUjiModel> hasilUjis = HasilUjiModel.findBySQL("SELECT h.* FROM sampel s, hasil_uji h WHERE h.id_sampel = s.id AND s.no_formulir like ? ORDER BY id DESC", '%' + cari + '%');
         Base.close();
         
         loadTableHelper(hasilUjis);
