@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="hasiluji" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="33417fb6-bb47-4934-8811-4a4ffb06dd3f">
-	<property name="ireport.zoom" value="6.115909044841503"/>
-	<property name="ireport.x" value="1993"/>
-	<property name="ireport.y" value="2098"/>
+	<property name="ireport.zoom" value="0.8264462809917419"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="104"/>
 	<parameter name="no_form" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -395,7 +395,7 @@ AND s.no_formulir = $P{no_form}]]>
 				<reportElement x="0" y="0" width="61" height="20" uuid="751bdc41-8b75-4572-9f31-094df9debd55"/>
 			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="61" height="20" uuid="9982c3da-aa4d-4ba8-8fd0-3e0cc1cae8e3"/>
+				<reportElement x="0" y="0" width="61" height="21" uuid="9982c3da-aa4d-4ba8-8fd0-3e0cc1cae8e3"/>
 				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
 			</textField>
 			<rectangle>
@@ -409,7 +409,7 @@ AND s.no_formulir = $P{no_form}]]>
 				<textFieldExpression><![CDATA[$F{j_nama_jenis_pengujian}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="199" y="1" width="183" height="20" uuid="a842f1cf-5a9c-4a7e-b479-429504a60e4c"/>
+				<reportElement x="199" y="1" width="183" height="19" uuid="a842f1cf-5a9c-4a7e-b479-429504a60e4c"/>
 				<textFieldExpression><![CDATA[$F{h_hasil_uji}]]></textFieldExpression>
 			</textField>
 			<textField>
