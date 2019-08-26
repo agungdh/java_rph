@@ -115,8 +115,7 @@ public class JenisPengujian extends javax.swing.JFrame {
         Sampel.removeAllItems();
         
         Base.open();
-        LazyList<JenisPengujianModel> jenisUjis = JenisPengujianModel.findAll();
-        LazyList<SampelModel> sampels = SampelModel.findAll();
+        LazyList<SampelModel> sampels = SampelModel.findAll().orderBy("id desc");
         
         for(SampelModel sampel : sampels) {
             comboSampelID.add(Integer.parseInt(sampel.getString("id")));
@@ -177,7 +176,7 @@ public class JenisPengujian extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<JenisPengujianModel> jenisPengujians = JenisPengujianModel.findAll();
+        LazyList<JenisPengujianModel> jenisPengujians = JenisPengujianModel.findAll().orderBy("id desc");
         Base.close();
         
         loadTableHelper(jenisPengujians);
@@ -185,7 +184,7 @@ public class JenisPengujian extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<JenisPengujianModel> jenisPengujians = JenisPengujianModel.where("nama_jenis_pengujian like ?", '%' + cari + '%');
+        LazyList<JenisPengujianModel> jenisPengujians = JenisPengujianModel.where("nama_jenis_pengujian like ?", '%' + cari + '%').orderBy("id desc");
         Base.close();
         
         loadTableHelper(jenisPengujians);

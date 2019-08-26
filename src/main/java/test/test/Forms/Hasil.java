@@ -131,7 +131,7 @@ public class Hasil extends javax.swing.JFrame {
         Sampel.removeAllItems();
         
         Base.open();
-        LazyList<SampelModel> sampels = SampelModel.findAll();
+        LazyList<SampelModel> sampels = SampelModel.findAll().orderBy("id desc");
 
         for(SampelModel sampel : sampels) {
             comboSampelID.add(Integer.parseInt(sampel.getString("id")));
@@ -176,7 +176,7 @@ public class Hasil extends javax.swing.JFrame {
                 model.addRow(new Object[]{
                     hasilUji.getId(),
                     sampel.getString("nama"),
-                    kodeSampel.getString("kode"),
+                    kodeSampel.getString("kode") + sampel.getString("no_kode"),
                     kodeSampel.getString("jenis_sampel"),
                     jenisPengujian.getString("nama_jenis_pengujian"),
                     parsedtanggal,
@@ -200,7 +200,7 @@ public class Hasil extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<HasilUjiModel> hasilUjis = HasilUjiModel.findAll();
+        LazyList<HasilUjiModel> hasilUjis = HasilUjiModel.findAll().orderBy("id desc");
         Base.close();
         
         loadTableHelper(hasilUjis);
@@ -208,7 +208,7 @@ public class Hasil extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<HasilUjiModel> hasilUjis = HasilUjiModel.where("id like ?", '%' + cari + '%');
+        LazyList<HasilUjiModel> hasilUjis = HasilUjiModel.where("id like ?", '%' + cari + '%').orderBy("id desc");
         Base.close();
         
         loadTableHelper(hasilUjis);

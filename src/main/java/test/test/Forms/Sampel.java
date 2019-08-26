@@ -116,7 +116,7 @@ public class Sampel extends javax.swing.JFrame {
         
         Base.open();
 //        LazyList<JenisPengujianModel> jenisUjis = JenisPengujianModel.findAll();
-        LazyList<KodeSampelModel> kodeSampels = KodeSampelModel.findAll();
+        LazyList<KodeSampelModel> kodeSampels = KodeSampelModel.findAll().orderBy("id desc");
         
 //        for(JenisPengujianModel jenisUji : jenisUjis) {
 //            comboJenisUjiID.add(Integer.parseInt(jenisUji.getString("id")));
@@ -194,7 +194,7 @@ public class Sampel extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<SampelModel> sampels = SampelModel.findAll();
+        LazyList<SampelModel> sampels = SampelModel.findAll().orderBy("id desc");
         Base.close();
         
         loadTableHelper(sampels);
@@ -202,7 +202,7 @@ public class Sampel extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<SampelModel> sampels = SampelModel.where("no_formulir like ?", '%' + cari + '%');
+        LazyList<SampelModel> sampels = SampelModel.where("no_formulir like ?", '%' + cari + '%').orderBy("id desc");
         Base.close();
         
         loadTableHelper(sampels);
