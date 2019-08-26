@@ -5,8 +5,14 @@
  */
 package test.test.Forms;
 
+import java.awt.Color;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -17,7 +23,7 @@ public class MenuUtama extends javax.swing.JFrame {
     /**
      * Creates new form MenuUtama
      */
-    public MenuUtama() {
+    public MenuUtama() {        
         initComponents();
         
         this.setResizable(false);
