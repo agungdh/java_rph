@@ -114,6 +114,7 @@ public class Hasil extends javax.swing.JFrame {
             Formulir.setText(p.getString("no_formulir"));
             
             JenisUji.removeAllItems();
+            comboJenisUjiID = new ArrayList<Integer>();
             
             Base.open();
             LazyList<JenisPengujianModel> jenisPengujians = p.getAll(JenisPengujianModel.class);
